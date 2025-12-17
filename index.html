@@ -507,8 +507,35 @@
       .header-text h1 { font-size: 18px; }
       .header-emblem { width: 52px; height: 52px; font-size: 20px; }
       .carousel img { height: 260px; }
-      .nav-name { display: none; }
-      nav a { padding: 12px 8px; font-size: 11px; }
+      nav .wrap {
+        padding: 0 8px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      nav .wrap::-webkit-scrollbar { display: none; }
+
+      .nav-name {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 10px;
+        font-size: 12px;
+        border-right: 1px solid var(--border);
+        flex: 0 0 auto;
+        max-width: 40vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      nav a {
+        padding: 12px 10px;
+        font-size: 11px;
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
       section { padding: 20px 14px; }
       .video-grid { grid-template-columns: 1fr; }
       .books-grid { grid-template-columns: 1fr; }
