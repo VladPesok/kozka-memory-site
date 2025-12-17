@@ -4,7 +4,7 @@
 
 ## 🌐 Перегляд сайту
 
-Сайт доступний за адресою: [GitHub Pages](https://vladpesok.github.io/KozkaMemorySite/)
+Сайт доступний за адресою: [GitHub Pages](https://vladpesok.github.io/kozka-memory-site/)
 
 ## 📁 Структура проєкту
 
