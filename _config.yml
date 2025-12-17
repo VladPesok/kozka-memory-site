@@ -4,15 +4,3 @@ description: Меморіальна сторінка присвячена пам
 url: ""
 baseurl: ""
 
-# Build settings
-markdown: kramdown
-encoding: utf-8
-
-# Exclude files from build
-exclude:
-  - README.md
-  - Thumbs.db
-  - "*.fb2"
-  - "*.doc"
-  - "*.docx"
-
