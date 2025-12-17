@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сторінка пам'яті Андрія Вікторовича Козки</title>
+  <style>
+    :root {
+      --primary: #004a8f;
+      --primary-dark: #003366;
+      --primary-light: #0066cc;
+      --bg-main: #f8f9fa;
+      --bg-white: #ffffff;
+      --text-dark: #222;
+      --text-muted: #555;
+      --border: #e0e0e0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-main);
+    }
+
+    /* Header */
+    .site-header {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 32px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-emblem {
+      width: 70px;
+      height: 70px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .header-text h1 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .header-text .subtitle {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 8px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .header-dates {
+      font-size: 14px;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--bg-white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-name {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 20px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      border-right: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    nav a:hover {
+      background: var(--bg-main);
+      color: var(--primary);
+    }
+
+    /* Main content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 12px 40px;
+    }
+
+    section {
+      background: var(--bg-white);
+      padding: 28px 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary);
+      font-weight: 600;
+    }
+
+    /* Photo Carousel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel img {
+      min-width: 100%;
+      height: 420px;
+      object-fit: contain;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--primary-light);
+    }
+
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+
+    .carousel-dots {
+      text-align: center;
+      padding: 16px 0 24px;
+      background: var(--bg-white);
+    }
+
+    .carousel-dots .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-dots .dot.active {
+      background: var(--primary);
+    }
+
+    /* Biography styling */
+    .bio-content {
+      column-count: 1;
+    }
+
+    .bio-content p {
+      text-align: justify;
+      text-indent: 2em;
+      margin: 0;
+    }
+
+    .bio-content p + p {
+      margin-top: 0.5em;
+    }
+
+    /* Gallery grid for photos */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .gallery-item:hover {
+      opacity: 0.85;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Diploma gallery - show full documents */
+    .diploma-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .diploma-item {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      overflow: hidden;
+    }
+
+    .diploma-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .diploma-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 36px;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    /* Books list */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .book-card {
+      background: var(--bg-main);
+      padding: 20px;
+      transition: background 0.2s;
+    }
+
+    .book-card:hover {
+      background: #eaeaea;
+    }
+
+    .book-card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .book-card .authors {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .book-card .download-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 14px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+
+    .book-card .download-btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* Music player */
+    .music-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .music-item {
+      background: var(--bg-main);
+      padding: 20px;
+    }
+
+    .music-item h4 {
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .music-item audio {
+      width: 100%;
+      height: 40px;
+    }
+
+    /* Video embed */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2px;
+    }
+
+    .video-item {
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+
+    .video-item .video-title {
+      background: var(--bg-main);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-dark);
+    }
+
+    .video-item .video-title a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .video-item .video-title a:hover {
+      text-decoration: underline;
+    }
+
+    /* Articles */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .article-item {
+      background: var(--bg-main);
+      border-left: 3px solid var(--primary);
+      padding: 20px;
+
+    }
+
+    .article-item h4 {
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .article-item a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .article-item a:hover {
+      text-decoration: underline;
+    }
+
+    .article-item .download-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .article-item .download-link:hover {
+      background: var(--primary-light);
+      text-decoration: none;
+    }
+
+    /* Contact info */
+    .contact-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      padding: 24px;
+      margin-top: 28px;
+    }
+
+    .contact-box h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-dark);
+    }
+
+    .contact-box a {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-top { padding: 24px 12px; gap: 14px; }
+      .header-text h1 { font-size: 18px; }
+      .header-emblem { width: 52px; height: 52px; font-size: 20px; }
+      .carousel img { height: 260px; }
+      .nav-name { display: none; }
+      nav a { padding: 12px 8px; font-size: 11px; }
+      section { padding: 20px 14px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .books-grid { grid-template-columns: 1fr; }
+      .diploma-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="header-emblem">АК</div>
+    <div class="header-text">
+      <h1>Андрій Вікторович Козка</h1>
+      <p class="subtitle">Науковець • Дослідник • Педагог • Музикант</p>
+      <p class="header-dates">10 жовтня 1977 — 15 грудня 2024</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-name">А.В. Козка</span>
+    <a href="#biography">Біографія</a>
+    <a href="#diplomas">Дипломи</a>
+    <a href="#books">Книги</a>
+    <a href="#articles">Статті</a>
+    <a href="#music">Музика</a>
+    <a href="#video">Відео</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Biography with Photos -->
+  <section id="biography">
+    <h2>Біографія</h2>
+    
+    <div class="carousel-container">
+      <div class="carousel" id="photoCarousel">
+        <img src="images/Kozka_1.png" alt="Фото Андрія Козки 1">
+        <img src="images/Kozka_2.png" alt="Фото Андрія Козки 2">
+        <img src="images/Kozka_3.png" alt="Фото Андрія Козки 3">
+        <img src="images/Kozka_4.png" alt="Фото Андрія Козки 4">
+      </div>
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+    
+    <div class="bio-content">
+      <p>Андрій Вікторович Козка передчасно відійшов у кращий із світів 15 грудня 2024 року. Це був відомий вчений, дослідник непізнанного, кандидат юридичних наук, член-кореспондент Міжнародної академії наук і інформаційних технологій, науковий працівник лабораторії радіо- та оптичної голографії ХНУ ім. В.Н. Каразіна, заступник генерального директора Інституту Голографії АН ПРЕ.</p>
+      
+      <p>Уродженець Харкова, мав як технічну, так і юридичну освіту. Займатися проблемою позаземних цивілізацій та НЛО почав у 2000 році — в рамках проекту «Природні катаклізми та шляхи їх запобігання» як юрист-аналітик. У листопаді-грудні 2001 року організував лекторій в міській бібліотеці ім. Белінського, згодом — проект «Феномен НЛО та Уфологія» у Харківському Планетарії ім. Ю.А. Гагаріна; певний час керував Юридичним Центром із Прав Людини у Харкові.</p>
+      
+      <p>Автор десятків наукових та науково-популярних статей, написав 12 книг про дослідження незвичайних феноменів та аномалій у співавторстві з Галиною Железняк. Книги видавались у серії «Опасно: Аномальная зона» (Книжковий клуб «Клуб сімейного дозвілля», Харків-Бєлгород, 2006–2009 рр.).</p>
+      
+      <p>Людина з великої літери, Андрій Козка був всесторонньо розвинутим, спектр його досліджень охоплював як непізнане, так і культурологію, технічні інновації, екологію, релігієзнавство тощо. Учасник багатьох дослідницьких і пошукових експедицій в Україні та за кордоном.</p>
+      
+      <p>Талановитий педагог, популяризатор науки, викладав у ПВНЗ «Університет Сучасних Знань» (м. Київ), регулярно читав публічні лекції із історії, ведичних знань, космології та інших актуальних тем, глибоко досліджуючи їх самостійно. Неодноразово виступав на телебаченні, шпальтах газет, журналів, був членом редакційної ради журналу «Оксамит» (Київ).</p>
+      
+      <p>Мав численні таланти — чудовий музикант, поет, композитор, клав свою та чужу поезію на музику; грав на декількох інструментах — гітарі, сітарі, мріданзі. Володів глибокими знаннями із древніх текстів Бхагават-гіта, Шрімад-бхагаватам та інших, вивчав і пропагував індоарійську спадщину України. Був надзвичайно доброю та чуйною людиною, сповідував ведичні цінності життя.</p>
+      
+      <p>Був лауреатом міжнародних наукових конкурсів, преміантом нагород.</p>
+      
+      <p>В останні роки життя, одночасно лікуючи батьків і лікуючись сам за кордоном, Андрій Козка паралельно працював у Geneva International Centre for Humanitarian Demining (GICHD), виступав експертом програми «Science Diplomacy EU Madrid Declaration» від України, представляв філію Науково-дослідного інституту українознавства у Швейцарії. Активно приймав участь у діяльності УНДЦА «Зонд» до самих останніх днів.</p>
+      
+      <p>Це велика втрата для вітчизняної аномалістики. Ми втратили не тільки вченого, але вірного друга, брата. Висловлюємо щирі співчуття батькам, близьким, знайомим і колегам А.В. Козки. Його світла пам'ять тепер житиме у наших справах, а смолоскип пізнання ми пронесемо крізь усі буревії!</p>
+    </div>
+    
+    <div class="contact-box">
+      <h3>Зв'язок</h3>
+      <p>Із приводу доповнення сторінки, якщо Ви знали Андрія Вікторовича Козку або/та у Вас збереглися його унікальні матеріали, творчі доробки, фотографії — будь ласка звертайтеся на офіційну електронну пошту УНДЦА «Зонд»: <a href="mailto:srcaa@zond.kiev.ua">srcaa@zond.kiev.ua</a></p>
+    </div>
+  </section>
+
+  <!-- Diplomas -->
+  <section id="diplomas">
+    <h2>Дипломи та нагороди</h2>
+    <div class="diploma-grid">
+      <div class="diploma-item" onclick="openLightbox('Дипломи/1.JPG')">
+        <img src="Дипломи/1.JPG" alt="Диплом 1">
+      </div>
+      <div class="diploma-item" onclick="openLightbox('Дипломи/2.JPG')">
+        <img src="Дипломи/2.JPG" alt="Диплом 2">
+      </div>
+      <div class="diploma-item" onclick="openLightbox('Дипломи/3.JPG')">
+        <img src="Дипломи/3.JPG" alt="Диплом 3">
+      </div>
+      <div class="diploma-item" onclick="openLightbox('Дипломи/4.JPG')">
+        <img src="Дипломи/4.JPG" alt="Диплом 4">
+      </div>
+      <div class="diploma-item" onclick="openLightbox('Дипломи/5.JPG')">
+        <img src="Дипломи/5.JPG" alt="Диплом 5">
+      </div>
+      <div class="diploma-item" onclick="openLightbox('Дипломи/7.JPG')">
+        <img src="Дипломи/7.JPG" alt="Диплом 7">
+      </div>
+    </div>
+  </section>
+
+  <!-- Books -->
+  <section id="books">
+    <h2>Книги</h2>
+    <p style="margin-bottom: 20px; color: var(--text-muted);">Книги видані у серії «Опасно: Аномальная зона» (Книжковий клуб «Клуб сімейного дозвілля», 2006–2009). Співавтор — Галина Железняк.</p>
+    <div class="books-grid">
+      <div class="book-card">
+        <h3>Чудеса и катастрофы Вселенной</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/CHudesa_i_katastrofy_Vselennoi.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>НЛО — секретные материалы</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/NLO__sekretnye_materialy.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Параллельные миры</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Parallelniye_miry.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Пришельцы среди нас</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Prishelcy_sredi_nas.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Пророчества великих</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Prorochestva_velikih.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Расшифрованные космические знания</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Rasshifrovannye_kosmicheskie_znaniya.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Религиозные чудеса и феномены</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Religioznye_chudesa_i_fenomeny.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Тайны человеческой психики</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Tainy_chelovecheskoi_psihiki.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Тайны исчезнувших цивилизаций</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Tainy_ischeznuvshih_civilizacii.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Загадочные места планеты</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Zagadochnye_mesta_planety.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Загадочные существа</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Zagadochnye_sushestva.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+      <div class="book-card">
+        <h3>Загадочные явления природы</h3>
+        <p class="authors">Г. Железняк, А. Козка</p>
+        <a href="Книги/Zagadochnye_yavleniya_prirody.fb2" class="download-btn" download>📥 Завантажити FB2</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section id="articles">
+    <h2>Наукові статті</h2>
+    <div class="article-list">
+      <div class="article-item">
+        <h4>Інноваційний лідар для екологічного моніторингу приземного шару атмосфери, феноменів кульових блискавок та інших аномальних явищ</h4>
+        <a href="Статті/+ІНОВАЦІЙНИЙ ЛІДАР ДЛЯ ЕКОЛОГІЧНОГО МОНИТОРИНГУ ПРИЗЕМНОГО ШАРУ АТМОСФЕРИ, ФЕНОМЕНІВ КУЛЬОВИХ БЛИСКАВОК  ТА ІНШИХ АНОМАЛЬНИХ ЯВИЩ.doc" class="download-link" download>📄 Завантажити DOC</a>
+      </div>
+      <div class="article-item">
+        <h4>Цивілізація та Україна</h4>
+        <p class="authors" style="color: var(--text-muted); font-size: 14px;">А. Козка, О. Марунич</p>
+        <a href="Статті/Цивілизія_та_Україна_Козка_Марунич.docx" class="download-link" download>📄 Завантажити DOCX</a>
+      </div>
+      <div class="article-item">
+        <h4>Про цінність людського життя</h4>
+        <a href="https://oksamyt.org/pro-tsinnist-lyudskogo-zhyttya/" target="_blank" rel="noopener noreferrer">🔗 Читати на oksamyt.org</a>
+      </div>
+      <div class="article-item">
+        <h4>Мудрість Сунь-Цзи та Махабхарати як актуальна допомога Україні у війні з агресором</h4>
+        <a href="http://www.spilnota.net.ua/ua/article/id-4770/" target="_blank" rel="noopener noreferrer">🔗 Читати на spilnota.net.ua</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music -->
+  <section id="music">
+    <h2>Музика</h2>
+    <p style="margin-bottom: 20px; color: var(--text-muted);">Музичні композиції на вірші А. Білика у виконанні та аранжуванні А.В. Козки.</p>
+    <div class="music-list">
+      <div class="music-item">
+        <h4>🎵 Есть Путь Туда Где Вечный Свет</h4>
+        <audio controls preload="metadata">
+          <source src="Музика/+Есть Путь Туда Где Вечный Свет ....mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="music-item">
+        <h4>🎵 Готичні Мотиви (на вірш А. Білик)</h4>
+        <audio controls preload="metadata">
+          <source src="Музика/Готичні_Мотиви_с_на_Вірш_А_Білик.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="music-item">
+        <h4>🎵 Життя вирує без упину (на вірш А. Білик)</h4>
+        <audio controls preload="metadata">
+          <source src="Музика/Життя_вирує_без_упину_с_на_вірш_А_Білик.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="music-item">
+        <h4>🎵 На пошуки галактик (А. Білику, 15.01.2021)</h4>
+        <audio controls preload="metadata">
+          <source src="Музика/На_пошуки_галактик_с_А_Білику_15_1_2021р.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="music-item">
+        <h4>🎵 Я йду у ніч (на вірш А. Білика) — ZOND</h4>
+        <audio controls preload="metadata">
+          <source src="Музика/Я_йду_у_ніч_с_на_вірш_А_Білика_ZOND.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section id="video">
+    <h2>Відео</h2>
+    <div class="article-list" style="margin-top: 15px;">
+      <div class="article-item">
+        <h4>Обговорення: Соціальна політика</h4>
+        <a href="https://www.youtube.com/watch?v=fB0S3WTcyqY" target="_blank">🔗 Переглянути на youtube.com</a>
+      </div>
+      <div class="article-item">
+        <h4>Лекція: Космічні таємниці курганів (за дослідженнями к.і.н. Ю. Шилова)</h4>
+        <a href="https://www.cultura.kh.ua/uk/news/4685-lektsija-andrija-kozki-kosmichni-taemnitsi-kurganiv-po-doslidzhennju-k-i-n-ju-shilova" target="_blank">🔗 Переглянути на cultura.kh.ua</a>
+      </div>
+      <div class="article-item">
+        <h4>Лекція: Індоєвропейські особливості України</h4>
+        <a href="https://www.cultura.kh.ua/uk/news/4560-lektsija-andrija-kozki-indoevropejski-osoblivosti-ukrayini" target="_blank">🔗 Переглянути на cultura.kh.ua</a>
+      </div>
+      <div class="article-item">
+        <h4>Онлайн-зустріч: Дистанційний екологічний контроль стану повітряного простору</h4>
+        <a href="https://ecology.karazin.ua/news/onlajn-zustrich-na-temu-distancijnij-ekologichnij-kontrol-stanu-povitrjanogo-prostoru/" target="_blank">🔗 Переглянути на ecology.karazin.ua</a>
+      </div>
+      <div class="article-item">
+        <h4>Лекція: Теорія голографічного Всесвіту (з циклу «Україна невідома»)</h4>
+        <a href="https://www.cultura.kh.ua/uk/news/4480-lektsija-na-temu-teorija-golografichnogo-vsesvitu-z-tsiklu-lektsij-ukrayina-nevidoma" target="_blank">🔗 Переглянути на cultura.kh.ua</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightboxImg" src="" alt="Збільшене зображення">
+</div>
+
+<footer>
+  <p>Сторінка пам'яті засновна Українським науково-дослідним Центром вивчення аномалій «Зонд» у 2025 році</p>
+  <p>Контакт: <a href="mailto:srcaa@zond.kiev.ua">srcaa@zond.kiev.ua</a></p>
+</footer>
+
+<script>
+  // Carousel functionality
+  let currentSlide = 0;
+  const carousel = document.getElementById('photoCarousel');
+  const images = carousel.querySelectorAll('img');
+  const totalSlides = images.length;
+  const dotsContainer = document.getElementById('carouselDots');
+
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.carousel-dots .dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function moveCarousel(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+
+  // Auto-advance carousel
+  setInterval(() => moveCarousel(1), 5000);
+
+  // Lightbox functionality
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  // Close lightbox with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
